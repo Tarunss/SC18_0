@@ -1,0 +1,14 @@
+ALTER TABLE Vehicles 
+ADD CONSTRAINT VehiclesFK
+FOREIGN KEY (ownerState,ownerLicenseID) REFERENCES Owners(ownerState,ownerLicenseID)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE Photos 
+ADD CONSTRAINT PhotosFK
+FOREIGN KEY (vehicleState,vehicleLicensePlate) REFERENCES Vehicles(vehicleState,vehicleLicensePlate)
+ON DELETE CASCADE ON UPDATE SET NULL;
+
+ALTER TABLE Photos
+ADD CONSTRAINT PhotosFK2
+FOREIGN KEY (cameraID) REFERENCES Cameras(cameraID)
+ON DELETE CASCADE ON UPDATE RESTRICT; 
